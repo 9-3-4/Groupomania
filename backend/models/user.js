@@ -22,18 +22,31 @@ User.create = (newCustomer, result) => {
     });
   };
 
+  //login d'un user
+  User.findName = (email, result) => {
+    con.query('SELECT * FROM t_user WHERE email=?',email, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      result(null, res)
+    });
+  }
+
   User.getAll = result => {
-    con.query("SELECT * FROM users", (err, res) => {
+    con.query("SELECT * FROM t_user", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
         return;
       }
   
-      console.log("Liste des users: ", res);
+      console.log("Liste des utilisateurs: ", res);
       result(null, res);
     });
   };
+
 
 
   module.exports = User;

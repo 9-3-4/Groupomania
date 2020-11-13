@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 const app = express();
 
 
-const userRoutes = require("./routes/user.js");
+const userRoutes = require("./routes/user");
 
-//Gestion erreur 
+//Gestion erreur du CORS
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.setHeader('Access-Control-Allow-Origin', '*');                                                                                  //tout le monde a le droit d acces a notre API
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');            // autorisation d utiliser certaines entete
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');                                            //et sur certaines methodes
   next();
 });
 

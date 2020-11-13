@@ -7,8 +7,11 @@ const userCtrl = require('../controllers/user');
 //autoriser récupération des donnees
 const auth = require('../middleware/auth');
 
-router.post('/signup', userCtrl.signup);//email password nouvel utilisateur
-router.post('/login', userCtrl.login);//email password utilisateur existant
-router.get('/auth', userCtrl.findAll);//récupération liste utilisateurs
+//POST
+router.post('/signup', userCtrl.signup);                                                    //création nouvel utilisateur
+router.post('/login', userCtrl.login);                                                      //authentification utilisateur existant
+
+//GET
+router.get('/',auth, userCtrl.findAll);                                                     //récupération liste utilisateurs
 
 module.exports = router;
