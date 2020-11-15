@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require("./../models/user");
 
 //Création d'un user
-
-
 exports.signup = (req, res, next) => {
     // Valider la requète
     if (!req.body) {
@@ -31,23 +29,25 @@ exports.signup = (req, res, next) => {
         })
 };
 
+//login d'un utilisateur
 exports.login = (req, res) => {
     //recherche de l'user
-    User.findName(req.body.email, (err, data) => {
+    User.findByEmail(req.body.email, (err, data) => {
+        console.log("data",data)
         user = data[0]
-        //Si le user n'existe pas
+        //Si l'utilisateur n'existe pas
         if (user.length == 0) {
             console.log('user non trouvé')
             res.status(401).json({ error: 'Utilisateur non trouvé' })
         }
-        //Si le user existe, vérification du mot de passe
+        //Si l'utilisateur existe, vérification du mot de passe
         else {
-            bcrypt.compare(req.body.password, user.password)
+            bcrypt.compare(req.body.password, user.motdepasse)
                 .then(valid => {
                     if (!valid) {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
                     }
-                    //SI valid récupération de l'id et création du TOKEN
+                    //Si valide récupération de l'id et création du TOKEN
                     res.status(200).json({
                         userId: user.id,
                         token: jwt.sign(
@@ -65,6 +65,7 @@ exports.login = (req, res) => {
 //Récupération liste des utilisateurs
 exports.findAll = (req, res, next) => {
     User.getAll((err, data) => {
+        console.log("data",data)
         if (err)
             res.status(500).send({
                 message:

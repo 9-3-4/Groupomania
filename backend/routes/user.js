@@ -12,6 +12,6 @@ router.post('/signup', userCtrl.signup);                                        
 router.post('/login', userCtrl.login);                                                      //authentification utilisateur existant
 
 //GET
-router.get('/',auth, userCtrl.findAll);                                                     //récupération liste utilisateurs
+router.get('/',auth, userCtrl.findAll);                                                     //récupération liste de tout les utilisateurs
 
 module.exports = router;

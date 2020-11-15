@@ -23,7 +23,7 @@ User.create = (newCustomer, result) => {
   };
 
   //login d'un user
-  User.findName = (email, result) => {
+  User.findByEmail = (email, result) => {
     con.query('SELECT * FROM t_user WHERE email=?',email, (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -34,6 +34,7 @@ User.create = (newCustomer, result) => {
     });
   }
 
+  //recupere tout les utilisateurs
   User.getAll = result => {
     con.query("SELECT * FROM t_user", (err, res) => {
       if (err) {
