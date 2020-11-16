@@ -1,0 +1,7 @@
+{ 
+    "étend": ["airbnb", "plus joli"], 
+    "plugins": ["plus joli"], 
+    "règles": { 
+      "plus joli / plus joli": ["erreur"] 
+    }
+  }
