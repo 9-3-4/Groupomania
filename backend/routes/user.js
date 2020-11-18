@@ -8,10 +8,13 @@ const userCtrl = require('../controllers/user');
 const auth = require('../middleware/auth');
 
 //POST
-router.post('/signup', userCtrl.signup);                                                    //création nouvel utilisateur
-router.post('/login', userCtrl.login);                                                      //authentification utilisateur existant
+router.post('/signup', userCtrl.signup); //création nouvel utilisateur
+router.post('/login', userCtrl.login); //authentification utilisateur existant
 
 //GET
-router.get('/',auth, userCtrl.findAll);                                                     //récupération liste de tout les utilisateurs
+router.get('/', auth, userCtrl.findAll);
+
+//DELETE
+router.delete('/id', userCtrl.delete);
 
 module.exports = router;
