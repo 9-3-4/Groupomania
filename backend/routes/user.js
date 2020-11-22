@@ -15,6 +15,6 @@ router.post('/login', userCtrl.login); //authentification utilisateur existant
 router.get('/', auth, userCtrl.findAll);
 
 //DELETE
-router.delete('/id', userCtrl.delete);
+router.delete('/delete/:id', userCtrl.delete);
 
 module.exports = router;

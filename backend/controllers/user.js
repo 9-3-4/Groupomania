@@ -74,6 +74,7 @@ exports.findAll = (req, res, next) => {
 
 //supression d'un utilisateur
 exports.delete = (req, res) => {
+  console.log(req.params);
   User.remove(req.params.id, (err, data) => {
     console.log('data', data);
     if (err) {

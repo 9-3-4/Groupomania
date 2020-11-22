@@ -49,7 +49,7 @@ User.getAll = (result) => {
 
 //supprime un utilisateur
 User.remove = (id, result) => {
-  con.query('DELETE FROM t_user WHERE id=?', id, (err, res) => {
+  con.query('DELETE FROM t_user WHERE id=?', [id], (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(null, err);
