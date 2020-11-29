@@ -1,4 +1,4 @@
-# social-network
+# socialnetwork
 
 ## Project setup
 ```
