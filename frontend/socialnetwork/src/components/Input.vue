@@ -18,19 +18,21 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "signup",
-  components: {},
-  props: {
-    modelValue: String,
-    label: String,
-    icon: String,
-    errorMessage: String,
-    isDanger: Boolean,
-  },
-});
+
+
+export default {
+ 
+   props:{
+  modelValue: String,
+  label: String,
+  icon: String,
+  errorMessage: String,
+  isDanger: Boolean,
+ }
+};
+
+
 </script>
 <style>
 .label{

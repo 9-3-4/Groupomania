@@ -29,7 +29,7 @@
           :error-message="password.error && password.error.message"
         />
         <Input
-          label="Confirmer mot de passe"
+          label="Confirmer mot de passe" class="label"
           type="password"
           icon="fa-key"
           v-model="confirmedPassword.value"
@@ -49,14 +49,16 @@
 import { defineComponent } from "vue";
 import Input from "../components/Input.vue";
 import { useForm } from "vue-hooks-form";
+import axios from "axios";
 
 export default defineComponent({
   name: "signup",
   components: {
-   Input
+   Input,
   },
   props: {
     modelValue: String,
+    
   },
   setup() {
     const { useField, errors, values, handleSubmit } = useForm({
@@ -76,8 +78,10 @@ export default defineComponent({
         min: 6,
         max: 10,
       },
+    
     });
-    const confirmedPassword = useField("confirmedPassword", {
+    
+   const confirmedPassword = useField("confirmedPassword", {
       rule: {
         required: true,
         validator(rule, value) {
@@ -88,20 +92,39 @@ export default defineComponent({
           }
           return true;
         },
-      },
+      }
     });
-    const onSubmit = (data) => console.log(data);
-    return {
-      username,
+    const onSubmit = (data) =>{
+      console.log(data)
+      axios
+        .post(
+          "http://localhost:3000/api/auth/signup",
+         data,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .catch(function (error) {
+          console.log(error);
+        });
+    console.log(data);
+  }
+  
+return {
+     username,
       email,
       password,
       confirmedPassword,
       onSubmit: handleSubmit(onSubmit),
       errors,
       values,
-    };
-  },
-});
+      };
+    
+  
+  }
+})
 </script>
 
 <style scoped>
