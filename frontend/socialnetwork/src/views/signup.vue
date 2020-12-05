@@ -6,10 +6,10 @@
         <Input
           label="Nom"
           icon="fa-user"
-          v-model="username.value"
-          :ref="username.ref"
-          :is-danger="!!username.error"
-          :error-message="username.error && username.error.message"
+          v-model="nom.value"
+          :ref="nom.ref"
+          :is-danger="!!nom.error"
+          :error-message="nom.error && nom.error.message"
         />
         <Input
           label="Email"
@@ -35,9 +35,7 @@
           v-model="confirmedPassword.value"
           :ref="confirmedPassword.ref"
           :is-danger="!!confirmedPassword.error"
-          :error-message="
-            confirmedPassword.error && confirmedPassword.error.message
-          "
+          :error-message="confirmedPassword.error && confirmedPassword.error.message"
         />
         <button class="button is-link" @click="onSubmit">s'inscrire</button>
       </div>
@@ -63,10 +61,10 @@ export default defineComponent({
   setup() {
     const { useField, errors, values, handleSubmit } = useForm({
       defaultValues: {
-        username: "",
+        nom: "",
       },
     });
-    const username = useField("username", {
+    const nom = useField("nom", {
       rule: { required: true },
     });
     const email = useField("email", {
@@ -78,7 +76,6 @@ export default defineComponent({
         min: 6,
         max: 10,
       },
-    
     });
     
    const confirmedPassword = useField("confirmedPassword", {
@@ -87,7 +84,7 @@ export default defineComponent({
         validator(rule, value) {
           if (!value || value !== values.password) {
             return new Error(
-              "The two passwords that you entered do not match!"
+              "Les deux mots de passe ne correspondent pas!"
             );
           }
           return true;
@@ -113,16 +110,14 @@ export default defineComponent({
   }
   
 return {
-     username,
-      email,
-      password,
-      confirmedPassword,
-      onSubmit: handleSubmit(onSubmit),
-      errors,
-      values,
-      };
-    
-  
+    nom,
+    email,
+    password,
+    confirmedPassword,
+    onSubmit: handleSubmit(onSubmit),
+    errors,
+    values,
+    };
   }
 })
 </script>

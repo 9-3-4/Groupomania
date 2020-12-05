@@ -19,11 +19,8 @@
 
 <script>
 
-
-
 export default {
- 
-   props:{
+  props:{
   modelValue: String,
   label: String,
   icon: String,
