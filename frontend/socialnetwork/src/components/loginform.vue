@@ -1,24 +1,60 @@
 <template>
   <div id="login">
-    <form action="">
-      <label class="labels" for="email">Email</label>
-      <input class="imput" id="email" type="text" />
-      <label class="labels" for="password">Mot de passe</label>
-      <input class="imput" id="password" type="password" /><br/>
-      <button v-on:click="login" class="loginButton">Me connecter</button>
+    <form @submit.prevent="submit()">
+      <input class="imput" id="email" type="email"  placeholder="Email" v-model="email" />
+      <input class="imput" id="password" type="password" placeholder="Mot de passe" v-model="password" /><br/>
+      <button class="button" type="submit">Me connecter</button>
     </form>
   </div>  
 </template>
 
 <script>
-export default {
-    
-}
+/*export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+methods: {
+    submit() {
+      axios.post(
+          "http://localhost:3000/api/auth/login",
+          {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+          },
+          headers: {
+              "Content-Type": "application/json",
+            },
+      )
+        .catch(function (error) {
+                  console.log(error);
+                });
+            console.log(data);
+          },
+  
+        return {
+          nom,
+          email,
+          password,
+          }
+  
+    }
+  
+};*/
 </script>
+
+         
+          
+            
+          }
+        )
+        
 
 
 <style>
-.loginButton {
+.button {
   cursor: pointer;
   width: 150px;
   height: 35px;
@@ -30,10 +66,14 @@ export default {
   font-weight: bold;
   font-size: 16px;
 }
+#email, #password{
+  text-align: center;
+}
 .imput{
   background: #e4d1d3;
   margin-bottom: 20px;
   margin-top: 75px;
+  margin-right: 20px;
   width: 250px;
   height: 50px;
   border: none;

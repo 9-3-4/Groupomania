@@ -41,5 +41,6 @@ input.input{
   height: 40px;
   border: none;
   border-radius: 10px;
+  text-align: center;
 }
 </style>

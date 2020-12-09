@@ -4,7 +4,7 @@
       <div class="tile is-child box">
         <h2 class="title">Inscription</h2>
         <Input
-          label="Nom"
+          placeholder="Nom"
           icon="fa-user"
           v-model="nom.value"
           :ref="nom.ref"
@@ -12,7 +12,7 @@
           :error-message="nom.error && nom.error.message"
         />
         <Input
-          label="Email"
+          placeholder="Email"
           icon="fa-user"
           v-model="email.value"
           :ref="email.ref"
@@ -20,7 +20,7 @@
           :error-message="email.error && email.error.message"
         />
         <Input
-          label="Mot de passe"
+          placeholder="Mot de passe"
           type="password"
           icon="fa-key"
           v-model="password.value"
@@ -29,7 +29,7 @@
           :error-message="password.error && password.error.message"
         />
         <Input
-          label="Confirmer mot de passe" class="label"
+          placeholder="Confirmer mot de passe"
           type="password"
           icon="fa-key"
           v-model="confirmedPassword.value"
