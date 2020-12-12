@@ -1,57 +1,63 @@
 <template>
   <div id="login">
     <form @submit.prevent="submit()">
-      <input class="imput" id="email" type="email"  placeholder="Email" v-model="email" />
-      <input class="imput" id="password" type="password" placeholder="Mot de passe" v-model="password" /><br/>
+      <input
+        class="imput"
+        id="email"
+        type="email"
+        placeholder="Email"
+        v-model="email"
+      />
+      <input
+        class="imput"
+        id="password"
+        type="password"
+        placeholder="Mot de passe"
+        v-model="password"
+      /><br />
       <button class="button" type="submit">Me connecter</button>
     </form>
-  </div>  
+  </div>
 </template>
 
 <script>
-/*export default {
+import axios from "axios";
+
+export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
-methods: {
+  methods: {
     submit() {
-      axios.post(
+      axios
+        .post(
           "http://localhost:3000/api/auth/login",
           {
             email: document.getElementById("email").value,
             password: document.getElementById("password").value,
           },
-          headers: {
+          {
+            headers: {
               "Content-Type": "application/json",
             },
-      )
-        .catch(function (error) {
-                  console.log(error);
-                });
-            console.log(data);
-          },
-  
-        return {
-          nom,
-          email,
-          password,
-          }
-  
-    }
-  
-};*/
-</script>
-
-         
-          
-            
           }
         )
-        
-
+        .then((response) => {
+          console.log(response.data.token);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.userId);
+          window.location.href = "http://localhost:8080/?#/";
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+  },
+};
+</script>
 
 <style>
 .button {
@@ -66,10 +72,11 @@ methods: {
   font-weight: bold;
   font-size: 16px;
 }
-#email, #password{
+#email,
+#password {
   text-align: center;
 }
-.imput{
+.imput {
   background: #e4d1d3;
   margin-bottom: 20px;
   margin-top: 75px;
@@ -79,11 +86,11 @@ methods: {
   border: none;
   border-radius: 10px;
 }
-.labels{
-   padding:15px;
-   margin-top: 75px;
-   margin-bottom: 20px;
-   font-weight: bold;
-   font-size: 16px;
+.labels {
+  padding: 15px;
+  margin-top: 75px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 16px;
 }
 </style>

@@ -49,14 +49,14 @@ exports.login = (req, res) => {
   User.findByEmail(req.body.email, (err, data) => {
     user = data[0];
     //Si utilisateur n'existe pas
-    if (user.length == 0) {
+    if (data.length == 0) {
       console.log("utilisateur non trouvé");
       res.status(401).json({ error: "Utilisateur non trouvé" });
     }
     //Si utilisateur existe, vérification du mot de passe
     else {
       bcrypt
-        .compare(req.body.password, user.password)
+        .compare(req.body.password, user.motdepasse)
         .then((valid) => {
           if (!valid) {
             return res.status(401).json({ error: "Mot de passe incorrect !" });
