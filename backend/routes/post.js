@@ -7,6 +7,6 @@ const postsCtrl = require("../controllers/post");
 //autoriser récupération des donnees
 //const multer = require("../middleware/multer-config");
 
-router.post("/", postsCtrl.createPost);
+router.post("/auth", postsCtrl.createPost);
 
 module.exports = router;

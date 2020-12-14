@@ -8,8 +8,9 @@ const Post = function (post) {
     (this.image = post.image);
 };
 
+//création d'un post
 Post.create = (newPost, result) => {
-  con.query("INSERT INTO posts SET ?", newPost, (err, res) => {
+  con.query("INSERT INTO t_post SET ?", newPost, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
