@@ -2,10 +2,10 @@ const con = require("./../config/db.js");
 
 //construction du model
 const Post = function (post) {
-  (this.userId = post.userId),
-    (this.postTitle = post.postTitle),
-    (this.content = post.content),
-    (this.image = post.image);
+  this.t_user_id = post.userId;
+  this.titre = post.postTitle;
+  this.contenu = post.content;
+  //this.image = post.image;
 };
 
 //création d'un post
@@ -21,3 +21,5 @@ Post.create = (newPost, result) => {
     result(null, { id: res.insertId, ...newPost });
   });
 };
+
+module.exports = Post;
