@@ -22,4 +22,18 @@ Post.create = (newPost, result) => {
   });
 };
 
+//récupération de tous les posts
+Post.getAll = (result) => {
+  con.query("SELECT * FROM t_post", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("posts: ", res);
+    result(null, res);
+  });
+};
+
 module.exports = Post;

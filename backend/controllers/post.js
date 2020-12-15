@@ -1,4 +1,5 @@
-const Post = require("./../models/post");
+const Post = require("./../models/post.js");
+
 //création d'un post
 exports.createPost = (req, res, next) => {
   if (!req.body) {
@@ -22,5 +23,16 @@ exports.createPost = (req, res, next) => {
       return;
     }
     res.send(data);
+  });
+};
+
+//récupération de tous les post
+exports.getallPosts = (req, res, next) => {
+  Post.getAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "error when receiving",
+      });
+    else res.send(data);
   });
 };
