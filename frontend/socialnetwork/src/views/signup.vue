@@ -51,6 +51,7 @@ import Input from "../components/Input.vue";
 import { useForm } from "vue-hooks-form";
 import axios from "axios";
 
+
 export default defineComponent({
   name: "signup",
   components: {

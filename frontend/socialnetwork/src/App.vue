@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Accueil</router-link> |
-      <router-link to="/signup">S'inscrire</router-link> |
-      <router-link to="/login">Se connecter</router-link> |
+      <!--<router-link to="/signup">S'inscrire</router-link> |
+      <router-link to="/login">Se connecter</router-link> |-->
       <router-link to="/mention">Mentions légales</router-link>
     </div>
     <router-view/>

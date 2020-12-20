@@ -1,6 +1,7 @@
 <template>
   <div id="login">
     <form @submit.prevent="submit()">
+      <h2 class="title">Connection</h2>
       <input
         class="imput"
         id="email"
