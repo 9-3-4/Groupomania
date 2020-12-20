@@ -13,4 +13,6 @@ router.post("/create", postsCtrl.createPost);
 //route GET pour récupérer tout les posts
 router.get("/getall", postsCtrl.getallPosts);
 
+//route delete pour supprimer un post
+router.delete("/:id", postsCtrl.deletePost);
 module.exports = router;

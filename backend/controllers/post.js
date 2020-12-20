@@ -10,8 +10,8 @@ exports.createPost = (req, res, next) => {
   //Création du post
   const post = new Post({
     userId: req.body.userId,
-    postTitle: req.body.postTitle,
-    content: req.body.postContent,
+    title: req.body.title,
+    content: req.body.content,
   });
   console.log(post);
   //sauv BDD
@@ -34,5 +34,22 @@ exports.getallPosts = (req, res, next) => {
         message: err.message || "error when receiving",
       });
     else res.send(data);
+  });
+};
+
+//suppression d'un post
+exports.deletePost = (req, res, next) => {
+  Post.delete(req.params.id, (err, data) => {
+    if (err) {
+      if ((err, kind === "not_found")) {
+        res.status(404).send({
+          message: `the post does not exist`,
+        });
+      } else {
+        res.status(500).send({
+          message: "delete not possible",
+        });
+      }
+    } else res.send({ message: `post delete` });
   });
 };
